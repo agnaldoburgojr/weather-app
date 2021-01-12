@@ -1,2 +1,2 @@
-export * from './http-get-client'
-export * from './http-response'
+export * from './types'
+export * from './http-get-client.interface'

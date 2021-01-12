@@ -1,11 +1,13 @@
-import axios from 'axios'
+import { AxiosResponse } from 'axios'
 import faker from 'faker'
+import { HttpGetParams } from '../protocols'
 
-export const mockAxios = (): jest.Mocked<typeof axios> => {
-  const mockedAxios = axios as jest.Mocked<typeof axios>
-  mockedAxios.get.mockResolvedValue({
-    data: faker.random.objectElement(),
-    status: faker.random.number()
-  })
-  return mockedAxios  
-}
+export const mockGetRequest = (): HttpGetParams<any> => ({
+  url: faker.internet.url(),
+  params: faker.random.objectElement()
+})
+
+export const mockAxiosResult = (): Partial<AxiosResponse<any>> =>  ({
+  data: faker.random.objectElement(),
+  status: faker.random.number()
+})

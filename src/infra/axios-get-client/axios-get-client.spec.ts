@@ -1,25 +1,16 @@
-import { AxiosHttpGetClient } from './axios-http-get-client'
+import { AxiosGetClient } from './axios-get-client'
 import axios from 'axios'
-import faker from 'faker'
-import { HttpGetParams } from '../protocols'
+import { mockAxiosResult, mockGetRequest} from '../test'
 
 jest.mock('axios')
 
-const mockedAxiosResult = {
-  data: faker.random.objectElement(),
-  status: faker.random.number()
-}
+const mockedAxiosResult = mockAxiosResult()
 
 const mockedAxios = axios as jest.Mocked<typeof axios>
 mockedAxios.get.mockResolvedValue(mockedAxiosResult)
 
-const mockGetRequest = (): HttpGetParams<any> => ({
-  url: faker.internet.url(),
-  params: faker.random.objectElement()
-})
-
-const makeSut = (): AxiosHttpGetClient => {
-  return new AxiosHttpGetClient()
+const makeSut = (): AxiosGetClient => {
+  return new AxiosGetClient()
 }
 
 describe('AxiosHttpClient', () => {
@@ -41,7 +32,7 @@ describe('AxiosHttpClient', () => {
 
   test('Should return the correct statusCode and body', async () => {
     const sut = makeSut()
-    mockedAxios.get.mockRejectedValueOnce(mockedAxiosResult)
+    mockedAxios.get.mockRejectedValueOnce({ response: mockedAxiosResult })
     const httpResponse = await sut.get(mockGetRequest())
     expect(httpResponse).toEqual({
       statusCode: mockedAxiosResult.status,

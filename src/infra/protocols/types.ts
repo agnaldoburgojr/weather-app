@@ -7,6 +7,11 @@ export enum HttpStatusCode {
   serverError = 500
 }
 
+export type HttpGetParams<T> = {
+  url: string
+  params?: T
+}
+
 export type HttpResponse<T> = {
   statusCode: HttpStatusCode
   body?: T
