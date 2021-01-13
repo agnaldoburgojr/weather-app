@@ -3,5 +3,6 @@ export type Address = {
   number: string,
   neighborhood: string,
   zipcode: string,
+  city: string,
   state: string
 }

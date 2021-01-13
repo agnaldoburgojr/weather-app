@@ -1,4 +1,4 @@
 export type Location = {
   longitude: number,
-  latidude: number
+  latitude: number
 }
