@@ -1,24 +1,21 @@
-import {registerRootComponent } from 'expo'
+import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { useApp } from './hooks/app'
+import Weather from './screens/Weather'
+import Provider from './hooks'
 
-const App:React.FC =() => {
+const App:React.FC = () => {
+  const { loadData } = useApp()
+
+ 
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <Provider >
+      <Weather />
       <StatusBar style="auto" />
-    </View>
+    </Provider>
   );
 }
 
 export default registerRootComponent(App)
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
