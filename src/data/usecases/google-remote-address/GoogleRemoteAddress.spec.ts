@@ -1,9 +1,9 @@
 import faker from 'faker'
-import { HttpGetClientSpy } from "../../../infra/test/HttpGetClientSpy"
-import { HttpStatusCode } from "../../../infra/protocols"
-import { UnexpectedError } from "../../../domain/errors"
-import { Address, Location } from "../../../domain/models"
-import GoogleRemoteAddress, { GoogleRemoteParams } from "./GoogleRemoteAddress"
+import { HttpGetClientSpy } from '../../../infra/test/HttpGetClientSpy'
+import { HttpStatusCode } from '../../../infra/protocols'
+import { UnexpectedError } from '../../../domain/errors'
+import { mockAddress, mockLocation } from '../../test'
+import GoogleRemoteAddress, { GoogleRemoteParams } from './GoogleRemoteAddress'
 
 type SutTypes = {
   sut: GoogleRemoteAddress
@@ -15,20 +15,6 @@ const makeSut = (url = faker.internet.url()): SutTypes => {
 
   return { sut, httpGetClientSpy }
 }
-
-const mockAddress = (): Address => ({
-  street: faker.address.streetAddress(),
-  number: faker.random.alpha(), 
-  neighborhood: faker.random.word(), 
-  zipcode: faker.random.alpha(), 
-  city: faker.address.city(), 
-  state: faker.address.state(), 
-})
-
-const mockLocation = (): Location => ({ 
-  latitude: faker.random.number(), 
-  longitude: faker.random.number()
-})
 
 describe('GoogleRemoteAddress', () => {
   test('should be call HttpGetClient with correct url', () => {
