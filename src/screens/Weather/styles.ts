@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import FeatherIcon from 'react-native-vector-icons/Feather';
 import colors from '../../styles/colors';
 
 export const Container = styled.View`
@@ -53,6 +54,33 @@ export const Description = styled.Text`
   font-size: 16px;
   color: ${colors.white};
   opacity: 0.5;
+`;
+
+export const AddressContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+`;
+
+export const Icon = styled(FeatherIcon)`
+  margin-right: 12px;
+  margin-top: 4px;
+  opacity: 0.7
+`;
+
+
+export const Address = styled.View`
+ 
+ 
+
+`;
+
+export const AddressPart = styled.Text`
+  font-size: 16px;
+  color: ${colors.white};
+  opacity: 0.5;
+  opacity: 0.7
 `;
 
 

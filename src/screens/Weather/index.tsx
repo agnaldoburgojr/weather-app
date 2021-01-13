@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Container, Content, Header, Temperature, Button, TextButton, LottieContainer, List, CityContainer, City, Description } from './styles';
+import { Container, Content, Header, Temperature, Button, TextButton, LottieContainer, List, CityContainer, City, Description, AddressContainer, Address, AddressPart, Icon } from './styles';
 import { Text, TouchableOpacity } from 'react-native'
 import { useApp } from '../../hooks/app'
 import { LottieAnimation, ItemList } from '../../components'
@@ -36,6 +36,15 @@ const Weather: React.FC = () => {
             <City>Ourinhos</City>
             <Description>Dia ensolarado</Description>
           </CityContainer>
+          <AddressContainer>
+            <Icon name='map-pin' color={colors.white} size={20} />
+            <Address>
+              <AddressPart>R. Brasil, 357 - Vila Christoni</AddressPart>
+              <AddressPart>Ourinhos - SP, 19911-690</AddressPart>
+              <AddressPart>Brasil</AddressPart>
+            </Address>
+          </AddressContainer>
+
           <Button onPress={handlePress}>
             <TextButton>Atualizar dados</TextButton>
           </Button>
