@@ -32,7 +32,7 @@ const Weather: React.FC = () => {
             <Header>
               <Temperature>25ºC</Temperature>
               <LottieContainer>
-                <LottieAnimation/>
+                <LottieAnimation reference={'50d'}/>
               </LottieContainer>
             </Header>
             <List>
