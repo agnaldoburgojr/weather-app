@@ -22,10 +22,6 @@ const App:React.FC = () => {
     })();
   }, []);
 
-  if(!location.latitude) {
-    return <View><Text>Você não pode ver os dados climáticos</Text></View>
-  }
-
   return (
     <Provider >
       <Weather />

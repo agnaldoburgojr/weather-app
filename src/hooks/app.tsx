@@ -64,8 +64,10 @@ const AppProvider: React.FC = ({ children }) => {
         pressure: 1,
         humidity: 60
       })
+      console.log('here')
       setLoading(false)
-    }, 2000)
+    }, 1000)
+    
   }, [])
 
   useEffect(()=> {

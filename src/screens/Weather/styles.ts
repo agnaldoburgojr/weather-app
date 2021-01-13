@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const Content = styled.View`
   flex: 1;
-  padding:  100px 36px;
+  padding:  100px 42px;
   align-items: center;
   justify-content: space-between;
 `;
@@ -37,7 +37,7 @@ export const List = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  /* margin-top: 36px; */
+  margin-top: 24px; 
 `;
 
 export const CityContainer = styled.View`
@@ -98,4 +98,27 @@ export const TextButton = styled.Text`
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
+`;
+
+export const Section = styled.View`
+  width: 100%;
+  margin-bottom: 64px;
+  margin-top: 24px;
+`
+
+export const Middle = styled.View`
+  width: 100%;
+  flex: 1;
+  justify-content: space-between;
+  
+  margin-bottom: 64px;
+`
+
+export const Footer = styled.View`
+  width: 100%;
+`
+export const LoadingContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center
 `;
