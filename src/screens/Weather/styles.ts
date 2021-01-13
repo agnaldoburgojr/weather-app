@@ -16,7 +16,7 @@ export const Content = styled.View`
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  align-items: baseline;
 `;
 
 export const LottieContainer = styled.View`
@@ -29,6 +29,12 @@ export const Temperature = styled.Text`
   font-size: 72px;
   color: ${colors.white};
   padding-right: 24px;
+`;
+
+export const List = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const Button = styled.TouchableOpacity`

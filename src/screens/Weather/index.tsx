@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
-import { Container, Content, Header, Temperature, Button, TextButton, LottieContainer } from './styles';
+import { Container, Content, Header, Temperature, Button, TextButton, LottieContainer, List } from './styles';
 import { Text, TouchableOpacity } from 'react-native'
 import { useApp } from '../../hooks/app'
-import { LottieAnimation } from '../../components'
+import { LottieAnimation, ItemList } from '../../components'
 import { LinearGradient } from 'expo-linear-gradient';
 import colors from '../../styles/colors';
 
@@ -26,6 +26,12 @@ const Weather: React.FC = () => {
               <LottieAnimation/>
             </LottieContainer>
           </Header>
+          <List>
+            <ItemList name='wind' description='12'/>
+            <ItemList name='wind' description='12'/>
+            <ItemList name='wind' description='12'/>
+            <ItemList name='wind' description='12'/>
+          </List>
           
           <Button onPress={handlePress}>
             <TextButton>Atualizar dados</TextButton>
