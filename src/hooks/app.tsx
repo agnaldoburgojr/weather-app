@@ -7,23 +7,21 @@ import React, {
 } from 'react';
 
 type Address = {
-  street: string,
-  number: string,
-  neighborhood: string,
-  zipcode: string,
-  city: string,
-  state: string
+  address: string,
+  moreInfo: string,
 }
 
 type Forecast = {
-  weatherMain: string,
+  main: string,
   description: string,
+  reference: string,
   temp: number,
-  feelsLike: number,
   tempMin: number,
   tempMax: number,
-  pressure: number,
-  humidity: number
+  humidity: number,
+  wind: number,
+  city: string,
+  period: 'night' | 'day'
 }
 
 interface AppContextData {
@@ -46,28 +44,24 @@ const AppProvider: React.FC = ({ children }) => {
     await setTimeout(() => {
       console.log('Agora aqui')
       setAddress({
-        street: 'rua Brasil',
-        number: '367',
-        neighborhood: 'Nova Christoni',
-        zipcode: '1999000',
-        city: 'Ourinhos',
-        state: 'São Paulo'
+        address: 'R. Brasil, 357 - Vila Christoni',
+        moreInfo: 'Ourinhos - SP, 19911-690',
       })
-  
       setForecast({
-        weatherMain: 'Claro',
-        description: 'Dia ensolarado',
-        temp: 25,
-        feelsLike: 70.5,
-        tempMin: 36,
-        tempMax: 22,
-        pressure: 1,
-        humidity: 60
+        main: 'Clear',
+        description: 'dia ensolarado',
+        reference: '10n',
+        temp: 28,
+        tempMin: 25,
+        tempMax: 31,
+        humidity: 71,
+        wind: 3.3,
+        city: 'Ourinhos',
+        period: '10n'.substr(-1) === 'n' ? 'night' : 'day'
       })
       console.log('here')
       setLoading(false)
     }, 1000)
-    
   }, [])
 
   useEffect(()=> {

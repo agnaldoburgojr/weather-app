@@ -19,7 +19,10 @@ const Weather: React.FC = () => {
   return (
     <Container>
       <LinearGradient
-        colors={[colors.lightBlue, colors.blue]}
+        colors={[forecast.period === 'night' 
+                  ? colors.darkBlue 
+                  : colors.lightBlue, 
+                colors.blue]}
         style={{ flex: 1 }}
       >
       {loading ? (
@@ -30,28 +33,28 @@ const Weather: React.FC = () => {
         <Content>
           <Section>
             <Header>
-              <Temperature>25ºC</Temperature>
+              <Temperature>{`${forecast.temp}ºC`}</Temperature>
               <LottieContainer>
-                <LottieAnimation reference={'50d'}/>
+                <LottieAnimation reference={forecast.reference}/>
               </LottieContainer>
             </Header>
             <List>
-              <ItemList name='arrow-up' description='12ºC'/>
-              <ItemList name='arrow-down' description='12ºC'/>
-              <ItemList name='droplet' description='12%'/>
-              <ItemList name='wind' description='12 m/s'/>
+              <ItemList name='arrow-up' description={`${forecast.tempMax}ºC`}/>
+              <ItemList name='arrow-down' description={`${forecast.tempMin}ºC`}/>
+              <ItemList name='droplet' description={`${forecast.humidity}%`}/>
+              <ItemList name='wind' description={`${forecast.wind}m/s`}/>
             </List>
           </Section>
           <Middle>
             <CityContainer>
-              <City>Ourinhos</City>
-              <Description>Dia ensolarado</Description>
+              <City>{forecast.city}</City>
+              <Description>{forecast.description}</Description>
             </CityContainer>
             <AddressContainer>
               <Icon name='map-pin' color={colors.white} size={20} />
               <Address>
-                <AddressPart>R. Brasil, 357 - Vila Christoni</AddressPart>
-                <AddressPart>Ourinhos - SP, 19911-690</AddressPart>
+                <AddressPart>{address.address}</AddressPart>
+                <AddressPart>{address.moreInfo}</AddressPart>
                 <AddressPart>Brasil</AddressPart>
               </Address>
             </AddressContainer>
