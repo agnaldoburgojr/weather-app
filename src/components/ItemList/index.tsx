@@ -1,7 +1,6 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/Feather'
 import colors from '../../styles/colors';
-import { Container, Description } from './styles';
+import { Container, Description, Icon } from './styles';
 
 type ItemListProps = {
   name: string,

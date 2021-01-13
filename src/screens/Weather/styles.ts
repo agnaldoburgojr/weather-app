@@ -29,13 +29,32 @@ export const Temperature = styled.Text`
   font-size: 72px;
   color: ${colors.white};
   padding-right: 24px;
+  opacity: 0.8;
 `;
 
 export const List = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
+  /* margin-top: 36px; */
 `;
+
+export const CityContainer = styled.View`
+  width: 100%;
+`;
+
+export const City = styled.Text`
+  font-size: 28px;
+  color: ${colors.white};
+  opacity: 0.8;
+`;
+
+export const Description = styled.Text`
+  font-size: 16px;
+  color: ${colors.white};
+  opacity: 0.5;
+`;
+
 
 export const Button = styled.TouchableOpacity`
   width: 100%;

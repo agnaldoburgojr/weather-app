@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Container, Content, Header, Temperature, Button, TextButton, LottieContainer, List } from './styles';
+import { Container, Content, Header, Temperature, Button, TextButton, LottieContainer, List, CityContainer, City, Description } from './styles';
 import { Text, TouchableOpacity } from 'react-native'
 import { useApp } from '../../hooks/app'
 import { LottieAnimation, ItemList } from '../../components'
@@ -21,22 +21,25 @@ const Weather: React.FC = () => {
       >
         <Content>
           <Header>
-            <Temperature>25º</Temperature>
+            <Temperature>25ºC</Temperature>
             <LottieContainer>
               <LottieAnimation/>
             </LottieContainer>
           </Header>
           <List>
-            <ItemList name='wind' description='12'/>
-            <ItemList name='wind' description='12'/>
-            <ItemList name='wind' description='12'/>
-            <ItemList name='wind' description='12'/>
+            <ItemList name='arrow-up' description='12ºC'/>
+            <ItemList name='arrow-down' description='12ºC'/>
+            <ItemList name='droplet' description='12%'/>
+            <ItemList name='wind' description='12 m/s'/>
           </List>
-          
+          <CityContainer>
+            <City>Ourinhos</City>
+            <Description>Dia ensolarado</Description>
+          </CityContainer>
           <Button onPress={handlePress}>
             <TextButton>Atualizar dados</TextButton>
           </Button>
-      </Content>
+        </Content>
       </LinearGradient>
     </Container>
   )}
