@@ -15,13 +15,13 @@ export const Content = styled.View`
 `;
 
 export const Header = styled.View`
+  width: 100%;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 
 export const LottieContainer = styled.View`
-  flex: 1;
   align-items: center;
 `;
 
@@ -30,14 +30,12 @@ export const Temperature = styled.Text`
   font-size: 72px;
   color: ${colors.white};
   opacity: 0.8;
-  padding-right: 24px;
 `;
 
 export const List = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 24px; 
 `;
 
 export const CityContainer = styled.View`
@@ -69,7 +67,6 @@ export const Icon = styled(FeatherIcon)`
   margin-top: 4px;
 `;
 
-
 export const Address = styled.View``;
 
 export const AddressPart = styled.Text`
@@ -96,7 +93,7 @@ export const TextButton = styled.Text`
 
 export const Section = styled.View`
   width: 100%;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   margin-top: 24px;
 `
 

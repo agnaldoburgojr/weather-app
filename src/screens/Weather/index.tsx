@@ -59,7 +59,7 @@ const Weather: React.FC = () => {
               <Error error={error} />
             ) : (
               <>
-                <Animated.View style={{transform: [{translateY: offsetSection.y}]}}>
+                <Animated.View style={{transform: [{translateY: offsetSection.y}], width: '100%'}}>
                   <Section>
                     <Header>
                       <Temperature>{`${forecast.temp}ºC`}</Temperature>

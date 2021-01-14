@@ -6,6 +6,7 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex: 1;
 `;
 
 export const Description = styled.Text`
