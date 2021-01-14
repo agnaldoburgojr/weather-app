@@ -1,5 +1,5 @@
-import { HttpGetParams, HttpResponse } from '../../../domain/protocols'
 import axios, { AxiosResponse } from 'axios'
+import { HttpGetParams, HttpResponse } from '../../../domain/protocols'
 
 export class AxiosGetClient {
   async get(queryParams: HttpGetParams<any>): Promise<HttpResponse<any>> {

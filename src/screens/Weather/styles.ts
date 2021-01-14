@@ -9,9 +9,9 @@ export const Container = styled.View`
 
 export const Content = styled.View`
   flex: 1;
-  padding:  100px 42px;
   align-items: center;
   justify-content: space-between;
+  padding:  100px 42px;
 `;
 
 export const Header = styled.View`
@@ -29,8 +29,8 @@ export const Temperature = styled.Text`
   align-items: center;
   font-size: 72px;
   color: ${colors.white};
-  padding-right: 24px;
   opacity: 0.8;
+  padding-right: 24px;
 `;
 
 export const List = styled.View`
@@ -59,30 +59,24 @@ export const Description = styled.Text`
 export const AddressContainer = styled.View`
   width: 100%;
   flex-direction: row;
-  align-items: flex-start;
   justify-content: flex-end;
+  align-items: flex-start;
 `;
 
 export const Icon = styled(FeatherIcon)`
+  opacity: 0.7;
   margin-right: 12px;
   margin-top: 4px;
-  opacity: 0.7
 `;
 
 
-export const Address = styled.View`
- 
- 
-
-`;
+export const Address = styled.View``;
 
 export const AddressPart = styled.Text`
   font-size: 16px;
   color: ${colors.white};
-  opacity: 0.5;
-  opacity: 0.7
+  opacity: 0.7;
 `;
-
 
 export const Button = styled.TouchableOpacity`
   width: 100%;
@@ -110,13 +104,13 @@ export const Middle = styled.View`
   width: 100%;
   flex: 1;
   justify-content: space-between;
-  
   margin-bottom: 64px;
 `
 
 export const Footer = styled.View`
   width: 100%;
 `
+
 export const LoadingContainer = styled.View`
   flex: 1;
   justify-content: center;

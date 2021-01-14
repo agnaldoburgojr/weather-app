@@ -1,7 +1,6 @@
-import { RemoteAddressI } from '../../../domain/protocols';
 import { Address, Location } from '../../../domain/models'
-import { HttpGetClientI, HttpStatusCode } from "../../../domain/protocols";
 import { UnexpectedError } from "../../../domain/errors";
+import { HttpGetClientI, HttpStatusCode, RemoteAddressI } from "../../../domain/protocols";
 
 export type GoogleRemoteParams = {
   key: string,

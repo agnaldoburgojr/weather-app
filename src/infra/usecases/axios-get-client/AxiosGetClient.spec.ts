@@ -1,5 +1,5 @@
-import { AxiosGetClient } from './AxiosGetClient'
 import axios from 'axios'
+import { AxiosGetClient } from './AxiosGetClient'
 import { mockAxiosResult, mockGetRequest} from '../../test'
 
 jest.mock('axios')
