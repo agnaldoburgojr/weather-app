@@ -2,7 +2,7 @@ import { Location, Forecast } from '../../../domain/models'
 import { UnexpectedError } from "../../../domain/errors";
 import { HttpGetClientI, RemoteForecastI, HttpStatusCode } from "../../../domain/protocols";
 
-type OpenWeatherRemoteParams = {
+export type OpenWeatherRemoteParams = {
   lat: number,
   lon: number,
   appid: string,
@@ -29,7 +29,7 @@ export class OpenWeatherRemoteForecast implements RemoteForecastI {
     if(httpResponse.statusCode === HttpStatusCode.ok) {
       return this.formatForecast(httpResponse.body)
     }
-    throw new UnexpectedError('OpenWeatherRemoteForecast')
+    throw new UnexpectedError()
   }
 
   private formatForecast(forecast: any): Forecast {

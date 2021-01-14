@@ -2,7 +2,7 @@ import faker from 'faker'
 import { HttpGetClientSpy } from '../../../infra/test/HttpGetClientSpy'
 import { HttpStatusCode } from '../../../domain/protocols'
 import { UnexpectedError } from '../../../domain/errors'
-import { mockFailureResponse, mockLocation, mockSuccessResponse } from '../../test'
+import { mockFailureResponseGoogle, mockLocation, mockSuccessResponseGoogle } from '../../test'
 import { GoogleRemoteAddress, GoogleRemoteParams } from './GoogleRemoteAddress'
 
 type SutTypes = {
@@ -41,7 +41,7 @@ describe('GoogleRemoteAddress', () => {
   test('Should return a address is statusCode is 200 and status of body is OK', async () => {
     const { sut, httpGetClientSpy } = makeSut()
     const mockAddress = "R. Any Street, 111 - Vila Christoni, Marília - SP, 11111-690, Brasil"
-    const body = mockSuccessResponse(mockAddress)
+    const body = mockSuccessResponseGoogle(mockAddress)
     httpGetClientSpy.response = {
       statusCode: HttpStatusCode.ok,
       body
@@ -55,7 +55,7 @@ describe('GoogleRemoteAddress', () => {
 
   test('Should throw UnexpectedError if statusCode is 200 but status of body is not OK', async () => {
     const { sut, httpGetClientSpy } = makeSut()
-    const body = mockFailureResponse()
+    const body = mockFailureResponseGoogle()
     httpGetClientSpy.response = {
       statusCode: HttpStatusCode.ok,
       body
