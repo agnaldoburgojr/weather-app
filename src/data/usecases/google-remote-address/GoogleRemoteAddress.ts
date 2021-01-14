@@ -1,6 +1,6 @@
 import { Address, Location } from '../../../domain/models'
 import { UnexpectedError } from "../../../domain/errors";
-import { HttpGetClientI, RemoteAddressI } from "../../../domain/protocols";
+import { HttpGetClientI, HttpStatusCode, RemoteAddressI } from "../../../domain/protocols";
 
 export type GoogleRemoteParams = {
   key: string,
@@ -22,9 +22,13 @@ export class GoogleRemoteAddress implements RemoteAddressI {
 
     const httpResponse = await this.httpGetClient.get({ url: this.url, params })
 
-    if(httpResponse.body.status !== 'OK') {
+    if(!httpResponse.body || 
+       !httpResponse.body.status || 
+       httpResponse.body.status !== 'OK' || 
+       httpResponse.statusCode !== HttpStatusCode.ok) {
       throw new UnexpectedError()
     }
+
     return this.formatAddress(httpResponse.body.results[0].formatted_address)
   }
 
@@ -32,8 +36,8 @@ export class GoogleRemoteAddress implements RemoteAddressI {
     const arrayAddress = addressString.split(',')
     
     return { 
-      address: `${arrayAddress[0]} ${arrayAddress[1]}`.trim(), 
-      moreInfo: `${arrayAddress[2]}${arrayAddress[3]}`.trim()
+      address: `${arrayAddress[0].trim()}, ${arrayAddress[1].trim()}`, 
+      moreInfo: `${arrayAddress[2].trim()}, ${arrayAddress[3].trim()}`
     }
   }
 }
