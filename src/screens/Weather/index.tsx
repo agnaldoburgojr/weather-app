@@ -19,7 +19,7 @@ const Weather: React.FC = () => {
   return (
     <Container>
       <LinearGradient
-        colors={[forecast.period === 'night' 
+        colors={[forecast.isNight
                   ? colors.darkBlue 
                   : colors.lightBlue, 
                 colors.blue]}

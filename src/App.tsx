@@ -25,7 +25,7 @@ const App:React.FC = () => {
   return (
     <Provider >
       <Weather />
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </Provider>
   );
 }

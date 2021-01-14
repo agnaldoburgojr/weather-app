@@ -5,6 +5,10 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
+import * as Location from 'expo-location';
+import { AxiosGetClient } from '../infra/usecases/axios-get-client/axios-get-client'
+import {GoogleRemoteAddress, OpenWeatherRemoteForecast } from '../data/usecases'
+import config from '../config'
 
 type Address = {
   address: string,
@@ -21,7 +25,7 @@ type Forecast = {
   humidity: number,
   wind: number,
   city: string,
-  period: 'night' | 'day'
+  isNight: boolean
 }
 
 interface AppContextData {
@@ -39,39 +43,45 @@ const AppProvider: React.FC = ({ children }) => {
   const [ forecast, setForecast ] = useState({} as Forecast)
   
   const loadData = useCallback(async () => {
-    setLoading(true)
-    console.log('entrou aqui')
-    await setTimeout(() => {
-      console.log('Agora aqui')
-      setAddress({
-        address: 'R. Brasil, 357 - Vila Christoni',
-        moreInfo: 'Ourinhos - SP, 19911-690',
-      })
-      setForecast({
-        main: 'Clear',
-        description: 'dia ensolarado',
-        reference: '10n',
-        temp: 28,
-        tempMin: 25,
-        tempMax: 31,
-        humidity: 71,
-        wind: 3.3,
-        city: 'Ourinhos',
-        period: '10n'.substr(-1) === 'n' ? 'night' : 'day'
-      })
-      console.log('here')
-      setLoading(false)
-    }, 1000)
-  }, [])
+     setLoading(true)
+    
+    const { coords: { latitude, longitude } } = await Location.getCurrentPositionAsync({});
+    
+    const axiosGetClientGoogle = new AxiosGetClient()
+    const googleRemoteAddress = new GoogleRemoteAddress(config.googleURL, axiosGetClientGoogle)
+    const newAddress = await googleRemoteAddress.getAddress({latitude, longitude}, config.googleKey)
+    setAddress(newAddress)
+
+    const axiosGetClientOpenWeather = new AxiosGetClient()
+    const openWeatherRemoteForecast = new OpenWeatherRemoteForecast(config.openWeatherURL, axiosGetClientOpenWeather)
+    const newForecast = await openWeatherRemoteForecast.getForecast({latitude, longitude}, config.openWeatherKey)
+    setForecast(newForecast)
+
+    setLoading(false)
+  //     setAddress({
+  //       address: 'R. Brasil, 357 - Vila Christoni',
+  //       moreInfo: 'Ourinhos - SP, 19911-690',
+  //     })
+  //     setForecast({
+  //       main: 'Clear',
+  //       description: 'dia ensolarado'[0].toUpperCase() + 'dia ensolarado'.substr(1),
+  //       reference: '10n',
+  //       temp: 28,
+  //       tempMin: 25,
+  //       tempMax: 31,
+  //       humidity: 71,
+  //       wind: 3.3,
+  //       city: 'Ourinhos',
+  //       isNight: '10n'.substr(-1) === 'n'
+  //     })
+   }, [])
 
   useEffect(()=> {
     loadData()
   }, [])
 
   return (
-    <AppContext.Provider
-      value={{ loadData, loading, forecast, address }}
-    >
+    <AppContext.Provider value={{ loadData, loading, forecast, address }}>
       {children}
     </AppContext.Provider>
   );

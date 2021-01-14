@@ -3,7 +3,7 @@ import { HttpGetClientSpy } from '../../../infra/test/HttpGetClientSpy'
 import { HttpStatusCode } from '../../../infra/protocols'
 import { UnexpectedError } from '../../../domain/errors'
 import { mockAddress, mockLocation } from '../../test'
-import GoogleRemoteAddress, { GoogleRemoteParams } from './GoogleRemoteAddress'
+import { GoogleRemoteAddress, GoogleRemoteParams } from './GoogleRemoteAddress'
 
 type SutTypes = {
   sut: GoogleRemoteAddress

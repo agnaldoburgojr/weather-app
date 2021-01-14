@@ -1,5 +1,5 @@
 import { RemoteAddressI } from "../../protocols/RemoteAddressI";
-import { Location, Address } from '../../../domain/models'
+import { Location } from '../../../domain/models'
 import { HttpGetClientI, HttpStatusCode } from "../../../infra/protocols";
 import { UnexpectedError } from "../../../domain/errors";
 
@@ -8,13 +8,18 @@ export type GoogleRemoteParams = {
   latlng: string,
 }
 
-export default class GoogleRemoteAddress implements RemoteAddressI {
- constructor (
-   private readonly url: string, 
-   private readonly httpGetClient: HttpGetClientI<GoogleRemoteParams, any>
+type FormattedAddress = {
+  address: string,
+  moreInfo: string
+}
+
+export class GoogleRemoteAddress{
+  constructor (
+    private readonly url: string, 
+    private readonly httpGetClient: HttpGetClientI<GoogleRemoteParams, any>
   ){}
 
-  async getAddress({ latitude, longitude }: Location, key: string) : Promise<Address> {
+  async getAddress({ latitude, longitude }: Location, key: string) : Promise<FormattedAddress> {
     const params = {
       key,
       latlng: `${latitude},${longitude}`,
@@ -24,9 +29,17 @@ export default class GoogleRemoteAddress implements RemoteAddressI {
     const httpResponse = await this.httpGetClient.get({ url: this.url, params })
 
     if(httpResponse.statusCode === HttpStatusCode.ok) {
-      const { street, number, neighborhood, zipcode, city, state } = httpResponse.body
-      return { street, number, neighborhood, zipcode, city, state }
+      return this.formatAddress(httpResponse.body.results[0].formatted_address)
     }
     throw new UnexpectedError('GoogleRemoteAuthentication')
+  }
+
+  private formatAddress(addressString: string): FormattedAddress{
+    const arrayAddress = addressString.split(',')
+    
+    return { 
+      address: `${arrayAddress[0]} ${arrayAddress[1]}`.trim(), 
+      moreInfo: `${arrayAddress[2]}${arrayAddress[3]}`.trim()
+    }
   }
 }
