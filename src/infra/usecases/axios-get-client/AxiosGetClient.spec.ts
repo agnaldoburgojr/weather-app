@@ -1,4 +1,4 @@
-import { AxiosGetClient } from './axios-get-client'
+import { AxiosGetClient } from './AxiosGetClient'
 import axios from 'axios'
 import { mockAxiosResult, mockGetRequest} from '../../test'
 

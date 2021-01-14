@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import faker from 'faker'
-import { HttpGetParams } from '../protocols'
+import { HttpGetParams } from '../../domain/protocols'
 
 export const mockGetRequest = (): HttpGetParams<any> => ({
   url: faker.internet.url(),

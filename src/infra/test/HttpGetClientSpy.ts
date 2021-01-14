@@ -1,4 +1,4 @@
-import { HttpGetClientI, HttpResponse, HttpGetParams, HttpStatusCode } from '../protocols'
+import { HttpGetClientI, HttpResponse, HttpGetParams, HttpStatusCode } from '../../domain/protocols'
 
 export class HttpGetClientSpy<T, R> implements HttpGetClientI<T, R> {
   url?: string

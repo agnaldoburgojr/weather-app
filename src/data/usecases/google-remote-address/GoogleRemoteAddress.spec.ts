@@ -1,6 +1,6 @@
 import faker from 'faker'
 import { HttpGetClientSpy } from '../../../infra/test/HttpGetClientSpy'
-import { HttpStatusCode } from '../../../infra/protocols'
+import { HttpStatusCode } from '../../../domain/protocols'
 import { UnexpectedError } from '../../../domain/errors'
 import { mockAddress, mockLocation } from '../../test'
 import { GoogleRemoteAddress, GoogleRemoteParams } from './GoogleRemoteAddress'

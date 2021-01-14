@@ -1,5 +1,5 @@
 import { Location } from '../../../domain/models'
-import { HttpGetClientI, HttpStatusCode } from "../../../infra/protocols";
+import { HttpGetClientI, HttpStatusCode } from "../../../domain/protocols";
 import { UnexpectedError } from "../../../domain/errors";
 
 type ForecastFormatted = {

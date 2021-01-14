@@ -1,4 +1,4 @@
-import { HttpGetParams, HttpResponse } from '../../protocols'
+import { HttpGetParams, HttpResponse } from '../../../domain/protocols'
 import axios, { AxiosResponse } from 'axios'
 
 export class AxiosGetClient {

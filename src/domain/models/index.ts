@@ -1,3 +1,3 @@
-export * from './address.model'
-export * from './location.model'
-export * from './forecast.model'
+export * from './address'
+export * from './forecast'
+export * from './location'
