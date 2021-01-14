@@ -32,16 +32,33 @@ const AppProvider: React.FC = ({ children }) => {
     
     const { coords: { latitude, longitude } } = await Location.getCurrentPositionAsync({});
     
-    const axiosGetClientGoogle = new AxiosGetClient()
-    const googleRemoteAddress = new GoogleRemoteAddress(config.googleURL, axiosGetClientGoogle)
-    const newAddress = await googleRemoteAddress.getAddress({latitude, longitude}, config.googleKey)
-    setAddress(newAddress)
+    // const axiosGetClientGoogle = new AxiosGetClient()
+    // const googleRemoteAddress = new GoogleRemoteAddress(config.googleURL, axiosGetClientGoogle)
+    // const newAddress = await googleRemoteAddress.getAddress({latitude, longitude}, config.googleKey)
+    // setAddress(newAddress)
 
-    const axiosGetClientOpenWeather = new AxiosGetClient()
-    const openWeatherRemoteForecast = new OpenWeatherRemoteForecast(config.openWeatherURL, axiosGetClientOpenWeather)
-    const newForecast = await openWeatherRemoteForecast.getForecast({latitude, longitude}, config.openWeatherKey)
-    setForecast(newForecast)
+    // const axiosGetClientOpenWeather = new AxiosGetClient()
+    // const openWeatherRemoteForecast = new OpenWeatherRemoteForecast(config.openWeatherURL, axiosGetClientOpenWeather)
+    // const newForecast = await openWeatherRemoteForecast.getForecast({latitude, longitude}, config.openWeatherKey)
+    // setForecast(newForecast)
 
+    setForecast({
+      "city": "Ourinhos",
+      "description": "Nublado",
+      "humidity": 76,
+      "isNight": true,
+      "main": "Clouds",
+      "reference": "04d",
+      "temp": 24,
+      "tempMax": 24,
+      "tempMin": 24,
+      "wind": 4.9,
+    }) 
+    setAddress({
+      "address": "R. Brasil  357 - Vila Christoni",
+      "moreInfo": "Ourinhos - SP 19911-690",
+    })
+    
     setLoading(false)
    }, [])
 
