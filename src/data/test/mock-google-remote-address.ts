@@ -1,5 +1,4 @@
 import faker from 'faker'
-import { Location } from '../../domain/models'
 
 export const mockSuccessResponseGoogle = (formatted_address = faker.random.words()): any => ({
   plus_code: faker.random.objectElement(),

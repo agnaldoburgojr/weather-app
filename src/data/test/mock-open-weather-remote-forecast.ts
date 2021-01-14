@@ -9,7 +9,7 @@ export const mockForecast = (): Forecast => ({
   tempMin: 25,
   tempMax: 25,
   humidity: 30,
-  wind: faker.random.number(2),
+  wind: 5,
   city: faker.random.word(),
   isNight: true
 })
