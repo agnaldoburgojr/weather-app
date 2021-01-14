@@ -27,7 +27,6 @@ export class OpenWeatherRemoteForecast implements RemoteForecastI {
     const httpResponse = await this.httpGetClient.get({ url: this.url, params })
 
     if(httpResponse.statusCode === HttpStatusCode.ok) {
-      console.log('Response ok hahaha', httpResponse.body)
       return this.formatForecast(httpResponse.body)
     }
     throw new UnexpectedError('OpenWeatherRemoteForecast')
