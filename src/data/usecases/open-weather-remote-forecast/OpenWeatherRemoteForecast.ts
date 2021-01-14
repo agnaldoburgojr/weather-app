@@ -1,27 +1,21 @@
-import { Location } from '../../../domain/models'
-import { HttpGetClientI, HttpStatusCode } from "../../../domain/protocols";
+import { Location, Forecast } from '../../../domain/models'
 import { UnexpectedError } from "../../../domain/errors";
+import { HttpGetClientI, RemoteForecastI, HttpStatusCode } from "../../../domain/protocols";
 
-type ForecastFormatted = {
-  main: string,
-  description: string,
-  reference: string,
-  temp: number,
-  tempMin: number,
-  tempMax: number,
-  humidity: number,
-  wind: number,
-  city: string,
-  isNight: boolean
+type OpenWeatherRemoteParams = {
+  lat: number,
+  lon: number,
+  appid: string,
+  units: string,
+  lang: string,
 }
-
-export class OpenWeatherRemoteForecast {
- constructor (
+export class OpenWeatherRemoteForecast implements RemoteForecastI {
+  constructor (
    private readonly url: string, 
-   private readonly httpGetClient: HttpGetClientI<any, any>
+   private readonly httpGetClient: HttpGetClientI<OpenWeatherRemoteParams, any>
   ){}
 
-  async getForecast({ latitude, longitude }: Location, key: string) : Promise<ForecastFormatted> {
+  async getForecast({ latitude, longitude }: Location, key: string) :Promise<Forecast> {
     const params = {
       lat: latitude,
       lon: longitude,
@@ -39,7 +33,7 @@ export class OpenWeatherRemoteForecast {
     throw new UnexpectedError('OpenWeatherRemoteForecast')
   }
 
-  private formatForecast(forecast: any): ForecastFormatted {
+  private formatForecast(forecast: any): Forecast {
     const description = forecast.weather[0].description
     const icon = forecast.weather[0].icon
     

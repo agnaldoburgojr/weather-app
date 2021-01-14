@@ -1,5 +1,5 @@
-import {  Forecast } from '../models'
+import { Location, Forecast } from '../models'
 
 export interface RemoteForecastI {
-  getForecast:() => Promise<Forecast>
+  getForecast:(location: Location, key: string) => Promise<Forecast>
 }
