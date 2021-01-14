@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
-import { ActivityIndicator, Animated, View } from 'react-native'
+import { ActivityIndicator, Animated } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
-import { LottieAnimation, ItemList } from '../../components'
+import { LottieAnimation, ItemList, Error } from '../../components'
 import { useApp } from '../../hooks/app'
 import colors from '../../styles/colors';
 import { Header, Temperature, LottieContainer, List, LoadingContainer } from './styles';
@@ -11,7 +11,7 @@ import { CityContainer, City, Description, Button, TextButton } from './styles'
 import getAnimation from './getAnimation'
 
 const Weather: React.FC = () => {
-  const { loadData, loading, address, forecast } = useApp()
+  const { loadData, loading, address, forecast, error } = useApp()
 
   const [opacity, setOpacity] = React.useState(new Animated.Value(0));
   const [offsetSection, setOffsetSection] = React.useState(new Animated.ValueXY({x: 0, y: 200}));
@@ -55,40 +55,46 @@ const Weather: React.FC = () => {
       ) : (
         <Animated.View style={{opacity: opacity, flex: 1}}>
           <Content>
-            <Animated.View style={{transform: [{translateY: offsetSection.y}]}}>
-              <Section>
-                <Header>
-                  <Temperature>{`${forecast.temp}ºC`}</Temperature>
-                  <LottieContainer>
-                    <LottieAnimation reference={forecast.reference}/>
-                  </LottieContainer>
-                </Header>
-                <List>
-                  <ItemList name='arrow-up' description={`${forecast.tempMax}ºC`}/>
-                  <ItemList name='arrow-down' description={`${forecast.tempMin}ºC`}/>
-                  <ItemList name='droplet' description={`${forecast.humidity}%`}/>
-                  <ItemList name='wind' description={`${forecast.wind}m/s`}/>
-                </List>
-              </Section>
-            </Animated.View>
-            <Middle>
-              <Animated.View style={{transform: [{translateX: offsetCity.x}]}}>
-                <CityContainer>
-                  <City>{forecast.city}</City>
-                  <Description>{forecast.description}</Description>
-                </CityContainer>
-              </Animated.View>
-              <Animated.View style={{transform: [{translateX: offsetAddress.x}]}}>
-                <AddressContainer>
-                  <Icon name='map-pin' color={colors.white} size={20} />
-                  <Address>
-                    <AddressPart>{address.address}</AddressPart>
-                    <AddressPart>{address.moreInfo}</AddressPart>
-                    <AddressPart>Brasil</AddressPart>
-                  </Address>
-                </AddressContainer>
-              </Animated.View>
-            </Middle>
+            {error.title ? (
+              <Error error={error} />
+            ) : (
+              <>
+                <Animated.View style={{transform: [{translateY: offsetSection.y}]}}>
+                  <Section>
+                    <Header>
+                      <Temperature>{`${forecast.temp}ºC`}</Temperature>
+                      <LottieContainer>
+                        <LottieAnimation reference={forecast.reference}/>
+                      </LottieContainer>
+                    </Header>
+                    <List>
+                      <ItemList name='arrow-up' description={`${forecast.tempMax}ºC`}/>
+                      <ItemList name='arrow-down' description={`${forecast.tempMin}ºC`}/>
+                      <ItemList name='droplet' description={`${forecast.humidity}%`}/>
+                      <ItemList name='wind' description={`${forecast.wind}m/s`}/>
+                    </List>
+                  </Section>
+                </Animated.View>
+                <Middle>
+                  <Animated.View style={{transform: [{translateX: offsetCity.x}]}}>
+                    <CityContainer>
+                      <City>{forecast.city}</City>
+                      <Description>{forecast.description}</Description>
+                    </CityContainer>
+                  </Animated.View>
+                  <Animated.View style={{transform: [{translateX: offsetAddress.x}]}}>
+                    <AddressContainer>
+                      <Icon name='map-pin' color={colors.white} size={20} />
+                      <Address>
+                        <AddressPart>{address.address}</AddressPart>
+                        <AddressPart>{address.moreInfo}</AddressPart>
+                        <AddressPart>Brasil</AddressPart>
+                      </Address>
+                    </AddressContainer>
+                  </Animated.View>
+                </Middle>
+              </>
+            )}
             <Animated.View style={{transform: [{translateY: offsetButton.y}], opacity: opacityButton, width: '100%'}}>
               <Footer>
                 <Button onPress={handlePress}>

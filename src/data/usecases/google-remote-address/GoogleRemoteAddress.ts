@@ -1,6 +1,6 @@
 import { Address, Location } from '../../../domain/models'
 import { UnexpectedError } from "../../../domain/errors";
-import { HttpGetClientI, HttpStatusCode, RemoteAddressI } from "../../../domain/protocols";
+import { HttpGetClientI, RemoteAddressI } from "../../../domain/protocols";
 
 export type GoogleRemoteParams = {
   key: string,
@@ -22,10 +22,10 @@ export class GoogleRemoteAddress implements RemoteAddressI {
 
     const httpResponse = await this.httpGetClient.get({ url: this.url, params })
 
-    if(httpResponse.statusCode === HttpStatusCode.ok) {
-      return this.formatAddress(httpResponse.body.results[0].formatted_address)
+    if(httpResponse.body.status !== 'OK') {
+      throw new UnexpectedError()
     }
-    throw new UnexpectedError('GoogleRemoteAuthentication')
+    return this.formatAddress(httpResponse.body.results[0].formatted_address)
   }
 
   private formatAddress(addressString: string): Address{

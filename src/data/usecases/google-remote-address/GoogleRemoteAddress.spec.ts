@@ -55,6 +55,6 @@ describe('GoogleRemoteAddress', () => {
       statusCode: HttpStatusCode.unauthorided
     }
     const promise = sut.getAddress(mockLocation(), faker.random.uuid())
-    await expect(promise).rejects.toThrow(new UnexpectedError(''))
+    await expect(promise).rejects.toThrow(new UnexpectedError())
   })
 })
