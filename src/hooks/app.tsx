@@ -25,37 +25,24 @@ const AppProvider: React.FC = ({ children }) => {
   const [ forecast, setForecast ] = useState({} as Forecast)
   
   const loadData = useCallback(async () => {
-     setLoading(true)
-    
-    // const { coords: { latitude, longitude } } = await Location.getCurrentPositionAsync({});
-    
-    // const axiosGetClientGoogle = new AxiosGetClient()
-    // const googleRemoteAddress = new GoogleRemoteAddress(config.googleURL, axiosGetClientGoogle)
-    // const newAddress = await googleRemoteAddress.getAddress({latitude, longitude}, config.googleKey)
-    // setAddress(newAddress)
+    setLoading(true)
 
-    // const axiosGetClientOpenWeather = new AxiosGetClient()
-    // const openWeatherRemoteForecast = new OpenWeatherRemoteForecast(config.openWeatherURL, axiosGetClientOpenWeather)
-    // const newForecast = await openWeatherRemoteForecast.getForecast({latitude, longitude}, config.openWeatherKey)
-    // setForecast(newForecast)
+    const { status } = await Location.requestPermissionsAsync();
+    if (status !== 'granted') return
+    
+    const { coords: { latitude, longitude } } = await Location.getCurrentPositionAsync({});
+    
+    const axiosGetClientGoogle = new AxiosGetClient()
+    const googleRemoteAddress = new GoogleRemoteAddress(config.googleURL, axiosGetClientGoogle)
+    const newAddress = await googleRemoteAddress.getAddress({latitude, longitude}, config.googleKey)
+    setAddress(newAddress)
+
+    const axiosGetClientOpenWeather = new AxiosGetClient()
+    const openWeatherRemoteForecast = new OpenWeatherRemoteForecast(config.openWeatherURL, axiosGetClientOpenWeather)
+    const newForecast = await openWeatherRemoteForecast.getForecast({latitude, longitude}, config.openWeatherKey)
+    setForecast(newForecast)
 
     setLoading(false)
-      setAddress({
-        address: 'R. Brasil, 357 - Vila Christoni',
-        moreInfo: 'Ourinhos - SP, 19911-690',
-      })
-      setForecast({
-        main: 'Clear',
-        description: 'dia ensolarado'[0].toUpperCase() + 'dia ensolarado'.substr(1),
-        reference: '10n',
-        temp: 28,
-        tempMin: 25,
-        tempMax: 31,
-        humidity: 71,
-        wind: 3.3,
-        city: 'Ourinhos',
-        isNight: '10n'.substr(-1) === 'n'
-      })
    }, [])
 
   useEffect(()=> {
