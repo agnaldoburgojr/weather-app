@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { AxiosGetClient } from './AxiosGetClient'
 import { mockAxiosResult, mockGetRequest} from '../../test'
+import { HttpStatusCode } from '../../../domain/protocols'
 
 jest.mock('axios')
 
@@ -21,7 +22,7 @@ describe('AxiosHttpClient', () => {
     expect(mockedAxios.get).toHaveBeenCalledWith(request.url, { params: request.params })
   })
 
-  test('Should return the correct statusCode and body', async () => {
+  test('Should return the correct statusCode and body when resolved request', async () => {
     const sut = makeSut()
     const httpResponse = await sut.get(mockGetRequest())
     expect(httpResponse).toEqual({
@@ -30,13 +31,22 @@ describe('AxiosHttpClient', () => {
     })
   })
 
-  test('Should return the correct statusCode and body', async () => {
+  test('Should return the correct statusCode and body when reject request', async () => {
     const sut = makeSut()
     mockedAxios.get.mockRejectedValueOnce({ response: mockedAxiosResult })
     const httpResponse = await sut.get(mockGetRequest())
     expect(httpResponse).toEqual({
       statusCode: mockedAxiosResult.status,
       body: mockedAxiosResult.data
+    })
+  })
+
+  test('Should return statusCode 500 when exists a Network Error', async () => {
+    const sut = makeSut()
+    mockedAxios.get.mockRejectedValueOnce(new Error('Network Error'))
+    const httpResponse = await sut.get(mockGetRequest())
+    expect(httpResponse).toEqual({
+      statusCode: HttpStatusCode.serverError,
     })
   })
 })
