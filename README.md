@@ -12,7 +12,6 @@
   <img alt="Project demo 1" src="./github/project-demo1.gif" width='300px'>
   <img alt="Project demo 2" src="./github/project-demo2.gif" width='300px'>
 </div>
-
 <br/>
 
 ## :large_blue_diamond: Descrição
@@ -119,7 +118,7 @@ Pode visualizar a página do app na Expo clicando [aqui](https://expo.io/@agnald
 
 ## :large_blue_diamond: Rodando a aplicação
 
-Para rodar a aplicação tenha o [npm](https://www.npmjs.com/get-npm) rodando em sua máquina. Siga os seguintes passos:
+Para rodar a aplicação tenha o [npm](https://www.npmjs.com/get-npm) e [Yarn](https://yarnpkg.com/getting-started) rodando em sua máquina. Siga os seguintes passos:
 
 ```bash
 # Install expo
@@ -130,6 +129,9 @@ $ git clone https://github.com/agnaldoburgojr/weather-app.git weatherApp
 
 # Go into the repository
 $ cd weatherApp
+
+# Install the dependences
+$ yarn install
 
 # Run the app
 $ expo start
@@ -142,7 +144,7 @@ Abra o aplicativo e scaneie o QRCode que está em seu terminal (após rodar o `e
 
 ### Testes
 
-Para rodar os testes use o comando abaixo (necessidade do [Yarn](https://yarnpkg.com/getting-started) instalado) dentro do diretório do projeto
+Para rodar os testes use o comando abaixo dentro do diretório do projeto
 
 ```
 yarn test --verbose
