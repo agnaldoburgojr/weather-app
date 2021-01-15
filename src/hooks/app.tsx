@@ -63,25 +63,6 @@ const AppProvider: React.FC = ({ children }) => {
     } finally {
       setLoading(false)
     }
-
-    // setForecast({
-    //   "city": "Ourinhos",
-    //   "description": "Nublado",
-    //   "humidity": 76,
-    //   "isNight": true,
-    //   "main": "Clouds",
-    //   "reference": "04d",
-    //   "temp": 24,
-    //   "tempMax": 24,
-    //   "tempMin": 24,
-    //   "wind": 4.9,
-    // }) 
-    // setAddress({
-    //   "address": "R. Brasil  357 - Vila Christoni",
-    //   "moreInfo": "Ourinhos - SP 19911-690",
-    // })
-
-    
    }, [])
 
   useEffect(() => {
