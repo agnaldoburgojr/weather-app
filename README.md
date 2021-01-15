@@ -50,6 +50,8 @@ As camadas ficaram assim:
 
 Essas duas últimas camadas utilizam o React e React Native e são escritas com programação funcional e reativa.
 
+Para melhor visualização da arquitetura veja este diagrama: [Builder Weather App Architecture](https://drive.google.com/file/d/1SGY14g0oq_dQXrdd_3X3agop5pYyNOe3/view?usp=sharing)
+
 ### Outras implementações
 
 O projeto poderia ser implementado somente com a camada de apresentação, o hook de carregamento principal e uma camada de serviços com o axios (ou fetch) para buscar os dados. Essa solução é mais comum e tem aspectos positivos e negativos, mas vou deixar isso para um próximo contato. Nesta abordagem citada podemos perceber algo como o padrão MVC.
@@ -79,6 +81,7 @@ Para a documentação do software temos os seguintes artefatos:
 - Testes de software: embora não seja BDD testes é uma boa forma de testar;
 - Este README: documento explicativo sobre o projeto;
 - Artefato apk instalável para Android.(Disponível [aqui](https://expo.io/artifacts/1fe3c09e-e132-40f7-b35b-d459d0418979))
+- Diagrama da arquitetura: [Builder Weather App Architecture](https://drive.google.com/file/d/1SGY14g0oq_dQXrdd_3X3agop5pYyNOe3/view?usp=sharing)
 
 > <i>Importante:</i> Testes de interface serão realizados nas próximas entregas
 
@@ -100,8 +103,8 @@ O projeto foi desenvolvida utilizando as seguintes tecnologias:
 
 Os serviços utilizados neste projeto foram:
 
-- Geocoding API da Google Clould Platform: para retornar dados do endereço a partir de uma localização;
-- Open Weather Map API: para retornar os dados climáticos.
+- [Geocoding API da Google Clould Platform](https://developers.google.com/maps/documentation/geocoding/overview): para retornar dados do endereço a partir de uma localização;
+- [Open Weather Map API](https://openweathermap.org/): para retornar os dados climáticos.
 
 > <i>Nota:</i> foi mantida uma chave dos serviços na aplicação para a avaliação!
 > Essas chaves são privadas e será retidada do projeto em breve sendo configuráveis como variáveis ambiente
