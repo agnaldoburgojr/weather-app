@@ -56,7 +56,6 @@ const AppProvider: React.FC = ({ children }) => {
       const newForecast = await openWeatherRemoteForecast.getForecast({latitude, longitude}, config.openWeatherKey)
       setForecast(newForecast)
     } catch (error) {
-      console.log(error)
       setError({
         title: 'Ops, algo errado aconteceu!',
         description: 'Ocorreu um problema no servidor, tente Atualizar Dados no botão abaixo ou tente mais tarde.'
