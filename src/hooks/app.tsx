@@ -26,10 +26,11 @@ interface AppContextData {
 const AppContext = createContext<AppContextData>({} as AppContextData);
 
 const AppProvider: React.FC = ({ children }) => {
+  const initialErrors = {title: '', description: ''}
   const [ loading, setLoading ] = useState(false)
   const [ address, setAddress ] = useState({} as Address)
   const [ forecast, setForecast ] = useState({} as Forecast)
-  const [ error, setError ] = useState<ErrorData>({title: '', description: ''})
+  const [ error, setError ] = useState<ErrorData>(initialErrors)
   
   const loadData = useCallback(async () => {
     setLoading(true)
@@ -55,6 +56,7 @@ const AppProvider: React.FC = ({ children }) => {
       const openWeatherRemoteForecast = new OpenWeatherRemoteForecast(config.openWeatherURL, axiosGetClientOpenWeather)
       const newForecast = await openWeatherRemoteForecast.getForecast({latitude, longitude}, config.openWeatherKey)
       setForecast(newForecast)
+      setError(initialErrors)
     } catch (error) {
       setError({
         title: 'Ops, algo errado aconteceu!',
