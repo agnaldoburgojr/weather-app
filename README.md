@@ -78,7 +78,7 @@ A interface foi idealizada para ser clean e leve e possui as seguintes caracter�
 
 Para a documentação do software temos os seguintes artefatos:
 
-- Testes de software: embora não seja BDD testes é uma boa forma de testar;
+- Testes de software: embora não seja BDD testes é uma boa forma de documentar;
 - Este README: documento explicativo sobre o projeto;
 - Artefato apk instalável para Android.(Disponível [aqui](https://expo.io/artifacts/1fe3c09e-e132-40f7-b35b-d459d0418979))
 - Diagrama da arquitetura: [Builder Weather App Architecture](https://drive.google.com/file/d/1SGY14g0oq_dQXrdd_3X3agop5pYyNOe3/view?usp=sharing)
