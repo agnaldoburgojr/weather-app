@@ -13,23 +13,6 @@
   <img alt="Project demo 2" src="./github/project-demo2.gif" width='300px'>
 </div>
 
-<p align="center">
-  <a href="#large_blue_diamond-descricao">Descrição</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-motivacao">Motivação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-um-pouco-da-arquitetura">Arquiterura</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-interface">Interface</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-documentacao">Documentação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  </br>
-  <a href="#large_blue_diamond-sobre-as-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-servicos-utilizados">Serviços</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-download-do-aplicativo">Download</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-rodando-a-aplicacao">Run</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  </br>
-  <a href="#large_blue_diamond-proximas-features">Proximas features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-contato">Contato</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#large_blue_diamond-licenca">Licença</a>
-</p>
-<br/>
 <br/>
 
 ## :large_blue_diamond: Descrição
